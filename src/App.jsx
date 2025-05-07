@@ -1,42 +1,21 @@
-import reactImg from './assets/react-core-concepts.png'
+import Header from './components/Header/Header.jsx';
+import CoreConcept from './components/CoreConcept/CoreConcept.jsx';
+import TabButton from './components/TabButton/TabButton.jsx';
 import { CORE_CONCEPTS as concepts } from './data';
 
-const reactDescriptions = ["Fundamental", "Crucial", "Core"];
-
-function genRandomIndex(max) {
-  return Math.floor(Math.random() * (max + 1));
-}
-
 function renderCoreConcept() {
-  return concepts.map((data) => <CoreConcept key={data.title} concept={data} />);
-}
-
-function Header() {
-  const description = reactDescriptions[genRandomIndex(reactDescriptions.length - 1)];
-  return (
-    <header>
-      <img src={reactImg} alt="Stylized atom" />
-      <h1>React Essentials</h1>
-      <p>
-        {description} React concepts you will need for almost any app you are
-        going to build!
-      </p>
-    </header>
-  );
-}
-
-function CoreConcept({ concept }) {
-  const { image, title, description } = concept; // destructuring props
-  return (
-    <li>
-      <img src={image} alt={title} />
-      <h3>{title}</h3>
-      <p>{description}</p>
-    </li>
-  );
+  return concepts.map((data) =>
+    <CoreConcept
+      key={data.title}
+      concept={data}
+    />);
 }
 
 function App() {
+  function handleSelect() {
+    console.log('Selected!');
+  }
+
   return (
     <div>
       <Header />
@@ -46,6 +25,14 @@ function App() {
           <ul>
             {renderCoreConcept()}
           </ul>
+        </section>
+        <section id='examples'>
+          <menu>
+            <TabButton onSelect={handleSelect}>Components</TabButton>
+            <TabButton onSelect={handleSelect}>JSX</TabButton>
+            <TabButton onSelect={handleSelect}>Props</TabButton>
+            <TabButton onSelect={handleSelect}>State</TabButton>
+          </menu>
         </section>
       </main>
     </div>
