@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, Fragment } from "react";
 import Header from "./components/Header/Header.jsx";
 import CoreConcept from "./components/CoreConcept/CoreConcept.jsx";
 import TabButton from "./components/TabButton/TabButton.jsx";
@@ -33,7 +33,8 @@ function App() {
   }
 
   return (
-    <div>
+    //we also use (<>...</>) for fragment and not nesscesary import Fragment from react
+    <Fragment>
       <Header />
       <main>
         <h2>Time to get started!</h2>
@@ -71,7 +72,7 @@ function App() {
           {tabContent}
         </section>
       </main>
-    </div>
+    </Fragment>
   );
 }
 
