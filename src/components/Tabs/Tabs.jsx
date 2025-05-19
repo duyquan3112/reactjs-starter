@@ -1,7 +1,8 @@
-function Tabs({ children, buttons }) {
+function Tabs({ children, buttons, buttonsContainer = "menu" }) {
+  const ButtonsContainer = buttonsContainer;
   return (
     <>
-      <menu>{buttons}</menu>
+      <ButtonsContainer>{buttons}</ButtonsContainer>
       {children}
     </>
   );
